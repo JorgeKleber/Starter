@@ -10,15 +10,38 @@
             
             <StackLayout VerticalOptions="Center"
                      Margin="35,0">
-                <Entry Placeholder="Ex.: joao@email.com"/>
-                <Entry Placeholder="sua senha" IsPassword="True"/>
-                <Button Text="Loging"/>
+                <Entry Placeholder="Ex.: joao@email.com"
+                       IsTextPredictionEnabled="True"/>
+                <Entry Placeholder="sua senha"
+                       IsPassword="True"
+                       ClearButtonVisibility="WhileEditing"/>
+                <Button Text="Loging" Command="{Binding LoginCommand}"/>
             </StackLayout>
 
-            <Label Text="Esqueci minha senha"
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center" 
+                         VerticalOptions="End">
+                <Label Text="Esqueci minha senha"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   Margin="0,35">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgetPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="|"
                    VerticalOptions="End"
                    HorizontalOptions="Center"
                    Margin="0,35"/>
+                <Label Text="Novo usuário"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   Margin="0,35">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NewUserCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

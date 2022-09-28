@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Athena.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Athena.ViewModels
 {
@@ -21,9 +24,33 @@ namespace Athena.ViewModels
 			}
 		}
 
+		public ICommand LoginCommand { get; set; }
+		public ICommand NewUserCommand { get; set; }
+
+		public ICommand ForgetPasswordCommand { get; set; }
+
 		public LoginPageViewModel()
 		{
 			TitlePage = "Bem vindo ao Athenas!";
+			NewUserCommand = new Command(NewUserCommandEvent);
+			ForgetPasswordCommand = new Command(ForgetPasswordCommandEvent);
+			LoginCommand = new Command(LoginCommandEvent);
+
+		}
+
+		private void LoginCommandEvent(object obj)
+		{
+			App.Current.MainPage = new NavigationPage(new MainPage());
+		}
+
+		private void ForgetPasswordCommandEvent(object obj)
+		{
+			App.Current.MainPage.DisplayAlert("Alert!!!", "Command está funcionando!!!", "Ok");
+		}
+
+		private void NewUserCommandEvent(object obj)
+		{
+			App.Current.MainPage.Navigation.PushModalAsync(new NewUserPage());
 		}
 	}
 }
