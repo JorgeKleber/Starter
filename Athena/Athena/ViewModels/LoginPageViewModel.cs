@@ -1,4 +1,6 @@
-﻿using Athena.Views;
+﻿using Akavache;
+using Athena.Models;
+using Athena.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +26,33 @@ namespace Athena.ViewModels
 			}
 		}
 
+		private string _UserName;
+
+		public string UserName
+		{
+			get
+			{
+				return _UserName;
+			}
+			set
+			{
+				_UserName = value;
+				Notify("UserInfo");
+
+			}
+		}
+
+		private string _Password;
+		public string Password
+		{
+			get { return _Password; }
+			set
+			{
+				_Password = value;
+				Notify("Password");
+			}
+		}
+
 		public ICommand LoginCommand { get; set; }
 		public ICommand NewUserCommand { get; set; }
 
@@ -40,6 +69,16 @@ namespace Athena.ViewModels
 
 		private void LoginCommandEvent(object obj)
 		{
+			User userinfo = new User()
+			{
+				Name = UserName,
+				Password = this.Password
+			};
+				
+				BlobCache.UserAccount.<User>();
+
+
+
 			App.Current.MainPage = new NavigationPage(new MainPage());
 		}
 

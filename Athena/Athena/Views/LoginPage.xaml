@@ -11,10 +11,12 @@
             <StackLayout VerticalOptions="Center"
                      Margin="35,0">
                 <Entry Placeholder="Ex.: joao@email.com"
-                       IsTextPredictionEnabled="True"/>
+                       IsTextPredictionEnabled="True"
+                       Text="{Binding UserName}"/>
                 <Entry Placeholder="sua senha"
                        IsPassword="True"
-                       ClearButtonVisibility="WhileEditing"/>
+                       ClearButtonVisibility="WhileEditing"
+                       Text="{Binding Password}"/>
                 <Button Text="Loging" Command="{Binding LoginCommand}"/>
             </StackLayout>
 

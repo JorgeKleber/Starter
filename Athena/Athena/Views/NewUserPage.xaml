@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Athena.Views.NewUserPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to new user page!!!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Entry Placeholder="Ex.: joao@email.com"
+                   Text="{Binding UserName}"
+                   IsTextPredictionEnabled="True"/>
+            <Entry Placeholder="sua senha"
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   ClearButtonVisibility="WhileEditing"/>
+            <Button Text="Test command"
+                    Command="{Binding SaveUserAccountCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
