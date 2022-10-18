@@ -1,5 +1,4 @@
-﻿using Akavache;
-using Athena.ViewModels;
+﻿using Athena.ViewModels;
 using Athena.Views;
 using System;
 using Xamarin.Forms;
@@ -11,8 +10,6 @@ namespace Athena
 	{
 		public App()
 		{
-			BlobCache.ApplicationName = "AthenaApp";
-
 			InitializeComponent();
 
 			MainPage = new LoginPage();

@@ -1,5 +1,4 @@
-﻿using Akavache;
-using Athena.Models;
+﻿using Athena.Models;
 using Athena.Views;
 using System;
 using System.Collections.Generic;
@@ -69,16 +68,6 @@ namespace Athena.ViewModels
 
 		private void LoginCommandEvent(object obj)
 		{
-			User userinfo = new User()
-			{
-				Name = UserName,
-				Password = this.Password
-			};
-				
-				BlobCache.UserAccount.<User>();
-
-
-
 			App.Current.MainPage = new NavigationPage(new MainPage());
 		}
 

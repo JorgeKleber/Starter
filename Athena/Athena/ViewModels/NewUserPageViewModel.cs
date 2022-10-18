@@ -1,5 +1,4 @@
-﻿using Akavache;
-using Athena.Models;
+﻿using Athena.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,8 +50,6 @@ namespace Athena.ViewModels
 				Name = UserName,
 				Password = this.Password
 			};
-
-			var teste = BlobCache.UserAccount.InsertObject("UserInfo", userInfo);
 
 			App.Current.MainPage.DisplayAlert("Teste", "Nome: "+UserName+" pass: "+Password, "Ok");
 
