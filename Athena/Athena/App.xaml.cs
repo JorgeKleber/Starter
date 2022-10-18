@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Athena.ViewModels;
+using Athena.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +12,7 @@ namespace Athena
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new LoginPage();
 		}
 
 		protected override void OnStart()
