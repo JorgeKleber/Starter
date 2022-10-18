@@ -1,4 +1,5 @@
-﻿using Athena.Models;
+﻿using Athena.Data;
+using Athena.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -43,17 +44,29 @@ namespace Athena.ViewModels
 			SaveUserAccountCommand = new Command(SaveUserAccountEvent);
 		}
 
-		private void SaveUserAccountEvent(object obj)
+		private async void SaveUserAccountEvent(object obj)
 		{
-			User userInfo = new User()
+			if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
 			{
-				Name = UserName,
-				Password = this.Password
-			};
+				await App.Current.MainPage.DisplayAlert("Atenção!!!", "Preencha todos os campos!", "Ok");
+			}
+			else
+			{
+				User userInfo = new User()
+				{
+					Name = UserName,
+					Password = this.Password
+				};
 
-			App.Current.MainPage.DisplayAlert("Teste", "Nome: "+UserName+" pass: "+Password, "Ok");
+				AthenaDb athenaDb = await AthenaDb.Instance;
+				int result = await athenaDb.SaveItemAsync(userInfo);
 
-
+				if (result != 0)
+				{
+					await App.Current.MainPage.DisplayAlert("Atenção!!!", "Usuário cadastrado com sucesso!", "Ok"); 
+					await App.Current.MainPage.Navigation.PopModalAsync();
+				}
+			}
 		}
 	}
 }

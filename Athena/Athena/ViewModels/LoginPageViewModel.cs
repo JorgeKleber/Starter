@@ -1,4 +1,5 @@
-﻿using Athena.Models;
+﻿using Athena.Data;
+using Athena.Models;
 using Athena.Views;
 using System;
 using System.Collections.Generic;
@@ -66,9 +67,20 @@ namespace Athena.ViewModels
 
 		}
 
-		private void LoginCommandEvent(object obj)
+		private async void LoginCommandEvent(object obj)
 		{
-			App.Current.MainPage = new NavigationPage(new MainPage());
+			AthenaDb db = await AthenaDb.Instance;
+
+			User user = await db.AuthUser(UserName, Password);
+
+			if (user != null)
+			{
+				App.Current.MainPage = new NavigationPage(new MainPage()); 
+			}
+			else
+			{
+				await App.Current.MainPage.DisplayAlert("Alert!!!", "Usuário não encontrado", "Ok");
+			}
 		}
 
 		private void ForgetPasswordCommandEvent(object obj)
