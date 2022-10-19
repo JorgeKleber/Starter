@@ -7,6 +7,9 @@
             <Entry Placeholder="Ex.: joao@email.com"
                    Text="{Binding UserName}"
                    IsTextPredictionEnabled="True"/>
+            <Entry Placeholder="Ex.: joao@email.com"
+                   Text="{Binding Income}"
+                   IsTextPredictionEnabled="True"/>
             <Entry Placeholder="sua senha"
                    Text="{Binding Password}"
                    IsPassword="True"

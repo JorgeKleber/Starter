@@ -11,6 +11,8 @@ namespace Athena.ViewModels
 	public class NewUserPageViewModel : ViewModelBase
 	{
 		private string _UserName;
+		private string _Password;
+		private string _Income;
 
 		public string UserName
 		{
@@ -26,14 +28,23 @@ namespace Athena.ViewModels
 			}
 		}
 
-		private string _Password;
 		public string Password
 		{
 			get { return _Password; }
 			set
 			{
-				_Password = value; 
+				_Password = value;
 				Notify("Password");
+			}
+		}
+
+		public string Income
+		{
+			get { return _Income; }
+			set
+			{
+				_Income = value;
+				Notify("Income");
 			}
 		}
 
@@ -55,7 +66,8 @@ namespace Athena.ViewModels
 				User userInfo = new User()
 				{
 					Name = UserName,
-					Password = this.Password
+					Password = this.Password,
+					Income =  double.Parse(this.Income)
 				};
 
 				AthenaDb athenaDb = await AthenaDb.Instance;
@@ -63,7 +75,7 @@ namespace Athena.ViewModels
 
 				if (result != 0)
 				{
-					await App.Current.MainPage.DisplayAlert("Atenção!!!", "Usuário cadastrado com sucesso!", "Ok"); 
+					await App.Current.MainPage.DisplayAlert("Atenção!!!", "Usuário cadastrado com sucesso!", "Ok");
 					await App.Current.MainPage.Navigation.PopModalAsync();
 				}
 			}

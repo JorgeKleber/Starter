@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Controller\Repository\Local\" />
     <Folder Include="Controller\Repository\Remote\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
   <ItemGroup>
